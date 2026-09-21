@@ -1,127 +1,98 @@
-const { useState, useEffect } = React;
+// Task Data
+let tasks = [
+  { id: 1, text: 'Review quarterly performance report', completed: true },
+  { id: 2, text: 'Design new landing page mockups', completed: false },
+  { id: 3, text: 'Setup client onboarding call', completed: false }
+];
 
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [activeTab, setActiveTab] = useState('Dashboard');
-  const [tasks, setTasks] = useState([
-    { id: 1, text: 'Review quarterly performance report', completed: true },
-    { id: 2, text: 'Design new landing page mockups', completed: false },
-    { id: 3, text: 'Setup client onboarding call', completed: false }
-  ]);
-  const [newTask, setNewTask] = useState('');
+let darkMode = false;
 
-  useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [darkMode]);
+// DOM Elements
+const taskForm = document.getElementById('task-form');
+const taskInput = document.getElementById('task-input');
+const taskList = document.getElementById('task-list');
+const totalTasksEl = document.getElementById('total-tasks');
+const completedTasksEl = document.getElementById('completed-tasks');
+const pendingTasksEl = document.getElementById('pending-tasks');
+const themeToggleBtn = document.getElementById('theme-toggle-btn');
+const themeIcon = document.getElementById('theme-icon');
+const themeText = document.getElementById('theme-text');
 
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    if (!newTask.trim()) return;
-    setTasks([{ id: Date.now(), text: newTask.trim(), completed: false }, ...tasks]);
-    setNewTask('');
-  };
+// Initialize Dashboard
+function render() {
+  // Update Metrics
+  totalTasksEl.textContent = tasks.length;
+  completedTasksEl.textContent = tasks.filter(t => t.completed).length;
+  pendingTasksEl.textContent = tasks.filter(t => !t.completed).length;
 
-  const toggleTask = (id) => {
-    setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
-  };
+  // Clear Task List UI
+  taskList.innerHTML = '';
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
-  };
+  // Render Tasks
+  tasks.forEach(task => {
+    const li = document.createElement('li');
+    li.className = `task-item ${task.completed ? 'completed' : ''}`;
 
-  return (
-    <div className="dashboard-layout">
-      <aside className="sidebar">
-        <div className="sidebar-brand">
-          <i className="fa-solid fa-chart-line"></i>
-          <span>DevDash</span>
-        </div>
-        <ul className="nav-links">
-          {['Dashboard', 'Tasks', 'Analytics', 'Settings'].map((tab) => (
-            <li
-              key={tab}
-              className={`nav-item ${activeTab === tab ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab)}
-            >
-              <i className={`fa-solid ${
-                tab === 'Dashboard' ? 'fa-house' : 
-                tab === 'Tasks' ? 'fa-list-check' : 
-                tab === 'Analytics' ? 'fa-chart-pie' : 'fa-gear'
-              }`}></i>
-              <span>{tab}</span>
-            </li>
-          ))}
-        </ul>
-      </aside>
+    li.innerHTML = `
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <input type="checkbox" ${task.completed ? 'checked' : ''} data-id="${task.id}" class="toggle-checkbox">
+        <span>${escapeHTML(task.text)}</span>
+      </div>
+      <button class="btn-delete" data-id="${task.id}">
+        <i class="fa-solid fa-trash-can"></i>
+      </button>
+    `;
 
-      <main className="main-content">
-        <header className="header-bar">
-          <div>
-            <h2>{activeTab} Overview</h2>
-          </div>
-          <button className="theme-toggle-btn" onClick={() => setDarkMode(!darkMode)}>
-            <i className={`fa-solid ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
-            <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
-          </button>
-        </header>
+    taskList.appendChild(li);
+  });
+}
 
-        <section className="metrics-grid">
-          <div className="metric-card">
-            <h3>Total Tasks</h3>
-            <div className="value">{tasks.length}</div>
-          </div>
-          <div className="metric-card">
-            <h3>Completed</h3>
-            <div className="value" style={{ color: '#10b981' }}>
-              {tasks.filter(t => t.completed).length}
-            </div>
-          </div>
-          <div className="metric-card">
-            <h3>Pending</h3>
-            <div className="value" style={{ color: '#f59e0b' }}>
-              {tasks.filter(t => !t.completed).length}
-            </div>
-          </div>
-        </section>
-
-        <section className="card">
-          <h3 style={{ marginBottom: '16px' }}>Task Management</h3>
-          <form onSubmit={handleAddTask} className="task-input-group">
-            <input
-              type="text"
-              placeholder="What needs to be done today?"
-              value={newTask}
-              onChange={(e) => setNewTask(e.target.value)}
-            />
-            <button type="submit" className="btn-primary">Add Task</button>
-          </form>
-
-          <ul className="task-list">
-            {tasks.map((task) => (
-              <li key={task.id} className={`task-item ${task.completed ? 'completed' : ''}`}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                  <input
-                    type="checkbox"
-                    checked={task.completed}
-                    onChange={() => toggleTask(task.id)}
-                  />
-                  <span>{task.text}</span>
-                </div>
-                <button className="btn-delete" onClick={() => deleteTask(task.id)}>
-                  <i className="fa-solid fa-trash-can"></i>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </main>
-    </div>
+// Helper: Escape HTML string to prevent injection
+function escapeHTML(str) {
+  return str.replace(/[&<>'"]/g, 
+    tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
   );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);   
+// Add New Task
+taskForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const text = taskInput.value.trim();
+  if (!text) return;
+
+  tasks.unshift({ id: Date.now(), text, completed: false });
+  taskInput.value = '';
+  render();
+});
+
+// Event Delegation for Complete / Delete
+taskList.addEventListener('click', (e) => {
+  const target = e.target.closest('.btn-delete') || e.target;
+  const id = Number(target.getAttribute('data-id'));
+
+  if (target.classList.contains('btn-delete') || target.closest('.btn-delete')) {
+    const deleteId = Number(target.getAttribute('data-id') || target.closest('.btn-delete').getAttribute('data-id'));
+    tasks = tasks.filter(t => t.id !== deleteId);
+    render();
+  } else if (target.classList.contains('toggle-checkbox')) {
+    tasks = tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t);
+    render();
+  }
+});
+
+// Dark Mode Toggle
+themeToggleBtn.addEventListener('click', () => {
+  darkMode = !darkMode;
+  if (darkMode) {
+    document.body.classList.add('dark-mode');
+    themeIcon.className = 'fa-solid fa-sun';
+    themeText.textContent = 'Light Mode';
+  } else {
+    document.body.classList.remove('dark-mode');
+    themeIcon.className = 'fa-solid fa-moon';
+    themeText.textContent = 'Dark Mode';
+  }
+});
+
+// Initial Render
+render();   
