@@ -13,20 +13,20 @@
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Link to CSS File -->
+  <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- React & Babel CDNs (Allows running JSX directly in browser without complex build steps) -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- React, ReactDOM, and Babel CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
 
-  <!-- Root element for React App -->
+  <!-- Root container for React -->
   <div id="root"></div>
 
-  <!-- Link to Main JS File -->
+  <!-- Load script as text/babel -->
   <script type="text/babel" src="app.js"></script>
 </body>
 </html>
