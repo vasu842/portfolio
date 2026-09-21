@@ -108,4 +108,4 @@ if (themeToggleBtn) {
 }
 
 // Initial App Load
-document.addEventListener('DOMContentLoaded', render);
+document.addEventListener('DOMContentLoaded', render);      
