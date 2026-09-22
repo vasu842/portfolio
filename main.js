@@ -1,3 +1,27 @@
+export const teachers = [
+  { subCode: "23BS0006", subName: "Discrete Mathematics and Graph Theory (DMGT)", teacher: "Mrs. S. SaiGeetha", phone: "8297112259" },
+  { subCode: "23HM0002", subName: "Universal Human Values 2 (UHV)", teacher: "Mrs. V. P. Rohini", phone: "8309508517" },
+  { subCode: "23PC4301", subName: "Artificial Intelligence (AI)", teacher: "V. Janardhan Babu", phone: "N/A" },
+  { subCode: "23PC0503", subName: "Advanced Data Structures and Algorithms (ADSA)", teacher: "Ms. H. Nazeema", phone: "8374946620" },
+  { subCode: "23PC0504", subName: "Object Oriented Programming Through JAVA (OOPJ)", teacher: "Mrs. N. Sridevi", phone: "9493324549" },
+  { subCode: "23LC0504", subName: "ADSA Lab", teacher: "Ms. H. Nazeema", phone: "8374946620" },
+  { subCode: "23LC0505", subName: "OOPJ Lab", teacher: "Mrs. N. Sridevi", phone: "9493324549" },
+  { subCode: "23SE0501", subName: "Python Programming (PP)", teacher: "Mrs. K. Hemavathi", phone: "9347142967" },
+  { subCode: "23MC0001", subName: "Environmental Science (ES)", teacher: "Mr. Dr. P. Vinod Kumar", phone: "8500951282" }
+];
+
+export const timetable = {
+  MON: ["OOP1", "ADS1", "DMGT1", "ADS2", "AI1", "OOP2", "OOP3"],
+  TUE: ["AI2", "ES1", "DMGT2", "PP LAB", "PP LAB", "PP LAB"],
+  WED: ["ADS3", "DMGT3", "UHV1", "ADS4", "AI3", "OOP4", "UHV3"],
+  THU: ["OOP LAB", "OOP LAB", "OOP LAB", "OOP5", "DMGT4", "ADS5", "PP"],
+  FRI: ["UHV", "ES2", "DMGT5", "AI4", "ADS LAB", "ADS LAB", "ADS LAB"]
+};
+
+export const periodTimes = [
+  "9:30 AM", "10:20 AM", "11:10 AM", "12:50 PM", "1:40 PM", "2:30 PM", "3:20 PM"
+];
+
 export const initialStudents = [
   { rollNo: "25G01A4301", name: "A B Suresh", department: "AI", status: "Present", notifyParent: true },
   { rollNo: "25G01A4302", name: "A G Jamuna", department: "AI", status: "Present", notifyParent: true },
