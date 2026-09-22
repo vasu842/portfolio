@@ -227,5 +227,6 @@
     .photo-frame {
         width: 280px;
         height: 330px;
+        <link rel="stylesheet" href="styles.css">
     }
 }

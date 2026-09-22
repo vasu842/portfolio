@@ -1,57 +1,209 @@
-<!-- Hero Section -->
-<section class="hero" id="home">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <div class="hero-content">
+    <title>Vasudeva | AI Portfolio</title>
 
-        <!-- LEFT SIDE -->
-        <div class="hero-text">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 
-            <span class="hello">HELLO, I'M</span>
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+</head>
 
-            <h1>
-                K. Vasudeva<br>
-                <span>Keelapudi</span>
-            </h1>
+<body>
 
-            <h2>B.Tech Student in Artificial Intelligence</h2>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            Vasudeva<span>.AI</span>
+        </div>
 
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <!-- LEFT -->
+            <div class="hero-text">
+
+                <span class="hello">HELLO, I'M</span>
+
+                <h1>
+                    K. Vasudeva<br>
+                    <span>Keelapudi</span>
+                </h1>
+
+                <h2>
+                    B.Tech Student in Artificial Intelligence
+                </h2>
+
+                <p>
+                    Passionate about solving real-world problems through
+                    Machine Learning, AI tools, and innovative technology solutions.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn primary-btn">
+                        View Projects
+                    </a>
+
+                    <a href="#contact" class="btn secondary-btn">
+                        Contact Me
+                    </a>
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT PHOTO -->
+            <div class="hero-photo">
+
+                <div class="photo-glow"></div>
+
+                <div class="photo-frame">
+
+                    <img
+                        src="images/vasudeva.png"
+                        alt="K. Vasudeva"
+                    >
+
+                </div>
+
+                <div class="ai-badge">
+                    <i class="fas fa-brain"></i>
+                    AI Developer
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+
+        <h2>About Me</h2>
+
+        <p>
+            My name is K. Vasudeva. I am a B.Tech Computer Science
+            student specializing in Artificial Intelligence at Sri Venkatesa
+            Perumal College of Engineering & Technology.
+        </p>
+
+        <p>
+            I am interested in Artificial Intelligence, Machine Learning,
+            programming and full-stack development. I enjoy learning new
+            technologies and building useful real-world projects.
+        </p>
+
+    </section>
+
+
+    <!-- EDUCATION -->
+    <section id="education" class="section">
+
+        <h2>Education</h2>
+
+        <div class="card">
+            <h3>B.Tech – Artificial Intelligence</h3>
             <p>
-                Passionate about solving real-world problems through
-                Machine Learning, AI tools, and innovative technology solutions.
+                Sri Venkatesa Perumal College of Engineering & Technology
             </p>
+            <p>Puttur, Andhra Pradesh</p>
+        </div>
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn primary-btn">
-                    View Projects
-                </a>
+    </section>
 
-                <a href="#contact" class="btn secondary-btn">
-                    Contact Me
-                </a>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+
+        <h2>Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill-card">C</div>
+            <div class="skill-card">Python</div>
+            <div class="skill-card">Java</div>
+            <div class="skill-card">HTML</div>
+            <div class="skill-card">CSS</div>
+            <div class="skill-card">JavaScript</div>
+            <div class="skill-card">AI</div>
+            <div class="skill-card">Machine Learning</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+
+        <h2>Projects</h2>
+
+        <div class="projects-container">
+
+            <div class="card">
+                <h3>Student Results App</h3>
+                <p>
+                    A result management application using Python,
+                    frontend and backend technologies.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>AI Portfolio</h3>
+                <p>
+                    Personal portfolio website showcasing AI,
+                    programming skills and projects.
+                </p>
             </div>
 
         </div>
 
-        <!-- RIGHT SIDE PHOTO -->
-        <div class="hero-photo">
+    </section>
 
-            <div class="photo-glow"></div>
 
-            <div class="photo-frame">
-                <img src="./images/vasudeva.png"
-                     alt="K. Vasudeva">
-            </div>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
 
-            <div class="ai-badge">
-                <i class="fas fa-brain"></i>
-                AI Developer
-            </div>
+        <h2>Contact Me</h2>
 
-        </div>
+        <p>Email: your-email@example.com</p>
 
-    </div>
+        <p>Location: Karvetinagar, Andhra Pradesh, India</p>
 
-</section>
-<script src="./main.js"></script>
+    </section>
+
+
+    <footer>
+        © <span id="year"></span> K. Vasudeva | Vasudeva.AI
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+
 </body>
 </html>
+src="images/vasudeva.png"
+<img src="images/vasudeva.png" alt="K. Vasudeva">
