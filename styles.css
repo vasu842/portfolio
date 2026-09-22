@@ -113,3 +113,9 @@ body {
   border-color: #2563eb;
   background-color: #fff;
 }
+
+.empty-message {
+  text-align: center;
+  color: #64748b;
+  padding: 20px;
+}
