@@ -131,3 +131,18 @@ body {
   background-color: #dc2626;
   color: #fff;
 }
+.action-dropdown {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: 13px;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+}
+
+.action-dropdown:focus {
+  border-color: #2563eb;
+  background-color: #fff;
+}
