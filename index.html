@@ -1,175 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>K. Vasudeva | AI Portfolio</title>
-  
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- CSS Stylesheet -->
-  <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
+<!-- Hero Section with Mail Link in Subtitle/Bio -->
+<section class="hero">
+  <div class="hero-container">
+    <!-- Left Column: Intro & Details -->
+    <div class="hero-content">
+      <span class="greeting">HELLO, I'M</span>
+      <h1 class="hero-name">K. Vasudeva<br><span class="highlight">Keelapudi</span></h1>
+      <h2 class="hero-subtitle">B.Tech Student in Artificial Intelligence</h2>
+      
+      <!-- Email Bio Link -->
+      <p class="hero-description">
+        Passionate about AI, ML, and innovative technology. Get in touch at 
+        <a href="mailto:vasudevakeelapudi@gmail.com" class="email-link">vasudevakeelapudi@gmail.com</a>.
+      </p>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar">
-    <div class="logo">Vasudeva<span>.AI</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-container">
-      <!-- Left Content -->
-      <div class="hero-content">
-        <span class="greeting">HELLO, I'M</span>
-        <h1>K. Vasudeva<br><span class="highlight">Keelapudi</span></h1>
-        <h2>B.Tech Student in Artificial Intelligence</h2>
-        <p>Passionate about solving real-world problems through Machine Learning, AI tools, and innovative technology solutions.</p>
-        <div class="hero-buttons">
-          <a href="#projects" class="btn btn-primary">View Projects</a>
-          <a href="#contact" class="btn btn-secondary">Contact Me</a>
-        </div>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <!-- Direct Mail Button -->
+        <a href="mailto:vasudevakeelapudi@gmail.com" class="btn btn-secondary">Contact Me</a>
       </div>
+    </div>
 
-      <!-- Right Profile Card -->
-      <div class="hero-image-wrapper">
-        <div class="profile-card">
-          <div class="img-box">
-            <img src="./profile.jpg" alt="K. Vasudeva Keelapudi">
-          </div>
-          <div class="badge">
-            <i class="fa-solid fa-brain"></i> AI Developer
-          </div>
+    <!-- Right Column: Profile Card -->
+    <div class="hero-image-wrapper">
+      <div class="profile-card">
+        <div class="img-box">
+          <img src="./profile.jpg" alt="K. Vasudeva Keelapudi">
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🧠</span> AI Developer
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- About Section -->
-  <section id="about" class="section reveal">
-    <h2 class="section-title">About Me</h2>
-    <div class="about-container">
-      <div class="about-text">
-        <p>
-          My name is <strong>K. Vasudeva Keelapudi</strong>. I am a student interested in Artificial Intelligence and technology. I enjoy learning about how AI can solve real-world problems and make our daily lives easier.
-        </p>
-        <p style="margin-top: 12px;">
-          I am currently developing my knowledge and skills in areas such as machine learning, programming, and AI tools. I am a hardworking and curious person who enjoys learning new things and improving my skills.
-        </p>
-        <p style="margin-top: 12px;">
-          My goal is to build a successful career in the field of Artificial Intelligence and use technology to create useful and innovative solutions.
-        </p>
-        
-        <div class="info-grid">
-          <div><strong>Full Name:</strong> K. Vasudeva Keelapudi</div>
-          <div><strong>Pronouns:</strong> He/Him</div>
-          <div><strong>Focus Area:</strong> Artificial Intelligence & Machine Learning</div>
-          <div><strong>Location:</strong> Karvetinagar, Andhra Pradesh, India</div>
-        </div>
-      </div>
+<!-- Contact Section with Email Link -->
+<section id="contact" class="section reveal">
+  <h2 class="section-title">Get In Touch</h2>
+  <div class="contact-container">
+    <p>Feel free to reach out for collaborations or opportunities!</p>
+    <div class="social-links">
+      <a href="https://github.com/vasu842" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
+      <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <!-- Email Icon Link -->
+      <a href="mailto:vasudevakeelapudi@gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i></a>
     </div>
-  </section>
-
-  <!-- Education Section -->
-  <section id="education" class="section reveal">
-    <h2 class="section-title">Education</h2>
-    <div class="education-grid">
-      <div class="education-card">
-        <div class="edu-header">
-          <i class="fa-solid fa-graduation-cap edu-icon"></i>
-          <div>
-            <h3>Sri Venkatesa Perumal College of Engineering & Technology</h3>
-            <span class="edu-location">Karvetinagar, Puttur, Andhra Pradesh, India</span>
-          </div>
-        </div>
-        <div class="edu-degree">Bachelor of Technology - B.Tech, Artificial Intelligence</div>
-        <div class="edu-date"><i class="fa-regular fa-calendar-alt"></i> Aug 2025 – May 2029</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section reveal">
-    <h2 class="section-title">Skills & Focus Areas</h2>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <i class="fa-solid fa-brain"></i>
-        <h3>Artificial Intelligence</h3>
-        <p>AI tools, problem-solving methodologies, and automation solutions.</p>
-      </div>
-      <div class="skill-card">
-        <i class="fa-solid fa-robot"></i>
-        <h3>Machine Learning</h3>
-        <p>Developing foundational concepts in predictive algorithms and model learning.</p>
-      </div>
-      <div class="skill-card">
-        <i class="fa-solid fa-code"></i>
-        <h3>Programming & Web</h3>
-        <p>Building functional user interfaces with HTML, CSS, JavaScript, and logic frameworks.</p>
-      </div>
-      <div class="skill-card">
-        <i class="fa-solid fa-lightbulb"></i>
-        <h3>Continuous Learning</h3>
-        <p>Curiosity, innovation, and ongoing development in emergent technology fields.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Projects Section -->
-  <section id="projects" class="section reveal">
-    <h2 class="section-title">Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-info">
-          <h3>Interactive AI Student Portfolio</h3>
-          <p>A scroll-animated, responsive personal showcase website featuring academic focus, skills, and background details.</p>
-          <div class="tags">
-            <span>HTML5</span>
-            <span>CSS3</span>
-            <span>JavaScript</span>
-            <span>AI Focus</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/vasu842/portfolio" target="_blank"><i class="fa-brands fa-github"></i> Source Code</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="section reveal">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-container">
-      <p>I am always open to connecting with fellow students, recruiters, and tech enthusiasts!</p>
-      <div class="social-links">
-        <a href="https://github.com/vasu842" target="_blank" title="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="mailto:contact@vasudeva.com" title="Email"><i class="fa-solid fa-envelope"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 K. Vasudeva Keelapudi. All rights reserved.</p>
-  </footer>
-
-  <!-- JavaScript File -->
-  <script src="./main.js"></script>
-</body>
-</html>
+  </div>
+</section>
