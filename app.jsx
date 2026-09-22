@@ -1,13 +1,17 @@
-function AttendancePortal() {
-  const [students, setStudents] = React.useState(() => {
+import React, { useState, useEffect } from 'react';
+import { initialStudents } from './students.js';
+import './styles.css';
+
+export default function AttendancePortal() {
+  const [students, setStudents] = useState(() => {
     const saved = localStorage.getItem('ai_attendance_data');
     return saved ? JSON.parse(saved) : initialStudents;
   });
-  
-  const [searchTerm, setSearchTerm] = React.useState('');
 
-  // Persist data locally
-  React.useEffect(() => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  // Persist state to local storage on update
+  useEffect(() => {
     localStorage.setItem('ai_attendance_data', JSON.stringify(students));
   }, [students]);
 
@@ -45,7 +49,7 @@ function AttendancePortal() {
         <input
           type="text"
           className="search-input"
-          placeholder="Search by Roll No (e.g. 25G01A4370) or Student Name..."
+          placeholder="Search by Roll No or Student Name..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
