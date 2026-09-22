@@ -1,64 +1,51 @@
-const initialStudents = [
-  { rollNo: "101", name: "Rahul Sharma", class: "CS-A", status: "Present", notifyParent: true },
-  { rollNo: "102", name: "Priya Patel", class: "CS-A", status: "Present", notifyParent: true },
-  { rollNo: "103", name: "Amit Kumar", class: "CS-A", status: "Present", notifyParent: true },
-  { rollNo: "104", name: "Sneha Reddy", class: "CS-A", status: "Present", notifyParent: true },
-  { rollNo: "105", name: "Vikas Singh", class: "CS-A", status: "Present", notifyParent: true }
-];
+function AttendancePortal() {
+  const [students, setStudents] = React.useState(() => {
+    const saved = localStorage.getItem('ai_attendance_data');
+    return saved ? JSON.parse(saved) : initialStudents;
+  });
+  
+  const [searchTerm, setSearchTerm] = React.useState('');
 
-function AttendanceApp() {
-  const [students, setStudents] = React.useState(initialStudents);
-  const [searchTerm, setSearchTerm] = React.useState("");
+  // Persist data locally
+  React.useEffect(() => {
+    localStorage.setItem('ai_attendance_data', JSON.stringify(students));
+  }, [students]);
 
-  // Plan A: Silent Daily Absent (Parent is NOT notified)
-  const applyPlanA = (rollNo) => {
+  const handleAction = (rollNo, action) => {
     setStudents(prev =>
-      prev.map(student =>
-        student.rollNo === rollNo
-          ? { ...student, status: "Absent", notifyParent: false }
-          : student
-      )
-    );
-  };
-
-  // Plan B: Auto-Fill Present
-  const applyPlanB = (rollNo) => {
-    setStudents(prev =>
-      prev.map(student =>
-        student.rollNo === rollNo
-          ? { ...student, status: "Present", notifyParent: true }
-          : student
-      )
-    );
-  };
-
-  // Standard Absent (Parent notified)
-  const applyStandardAbsent = (rollNo) => {
-    setStudents(prev =>
-      prev.map(student =>
-        student.rollNo === rollNo
-          ? { ...student, status: "Absent", notifyParent: true }
-          : student
-      )
+      prev.map(student => {
+        if (student.rollNo !== rollNo) return student;
+        switch (action) {
+          case 'plan_a': // Silent Absent
+            return { ...student, status: 'Absent', notifyParent: false };
+          case 'plan_b': // Auto Present
+            return { ...student, status: 'Present', notifyParent: true };
+          case 'standard': // Standard Absent
+            return { ...student, status: 'Absent', notifyParent: true };
+          default:
+            return student;
+        }
+      })
     );
   };
 
   const filteredStudents = students.filter(
-    s => s.rollNo.includes(searchTerm) || s.name.toLowerCase().includes(searchTerm.toLowerCase())
+    s => s.rollNo.toLowerCase().includes(searchTerm.toLowerCase()) ||
+         s.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="portal-container">
       <div className="header">
         <h1>College Attendance Portal</h1>
-        <p>Daily Student Identification & Attendance Management</p>
+        <p>Department of Artificial Intelligence (AI) — Daily Roll Register</p>
       </div>
 
       <div className="controls">
         <input
           type="text"
           className="search-input"
-          placeholder="Search by Roll No or Student Name..."
+          placeholder="Search by Roll No (e.g. 25G01A4370) or Student Name..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
@@ -69,7 +56,7 @@ function AttendanceApp() {
           <tr>
             <th>Roll No</th>
             <th>Student Name</th>
-            <th>Class</th>
+            <th>Dept</th>
             <th>Status</th>
             <th>Parent Alert</th>
             <th>Actions</th>
@@ -80,7 +67,7 @@ function AttendanceApp() {
             <tr key={student.rollNo}>
               <td><strong>{student.rollNo}</strong></td>
               <td>{student.name}</td>
-              <td>{student.class}</td>
+              <td>{student.department}</td>
               <td>
                 <span className={`badge ${student.status === 'Present' ? 'badge-present' : 'badge-absent'}`}>
                   {student.status}
@@ -98,17 +85,15 @@ function AttendanceApp() {
                 )}
               </td>
               <td>
-                <div className="btn-group">
-                  <button className="btn btn-plan-a" onClick={() => applyPlanA(student.rollNo)}>
-                    Plan A (Silent Absent)
-                  </button>
-                  <button className="btn btn-plan-b" onClick={() => applyPlanB(student.rollNo)}>
-                    Plan B (Auto Present)
-                  </button>
-                  <button className="btn btn-standard" onClick={() => applyStandardAbsent(student.rollNo)}>
-                    Standard Absent
-                  </button>
-                </div>
+                <select
+                  className="action-dropdown"
+                  value={student.status === 'Present' ? 'plan_b' : student.notifyParent ? 'standard' : 'plan_a'}
+                  onChange={(e) => handleAction(student.rollNo, e.target.value)}
+                >
+                  <option value="plan_b">Plan B: Auto Present</option>
+                  <option value="plan_a">Plan A: Silent Absent</option>
+                  <option value="standard">Standard Absent (SMS)</option>
+                </select>
               </td>
             </tr>
           ))}
