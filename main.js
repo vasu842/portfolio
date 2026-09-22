@@ -1,4 +1,14 @@
 export const teachers = [
+  import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import './styles.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
   { subCode: "23BS0006", subName: "Discrete Mathematics and Graph Theory (DMGT)", teacher: "Mrs. S. SaiGeetha", phone: "8297112259" },
   { subCode: "23HM0002", subName: "Universal Human Values 2 (UHV)", teacher: "Mrs. V. P. Rohini", phone: "8309508517" },
   { subCode: "23PC4301", subName: "Artificial Intelligence (AI)", teacher: "V. Janardhan Babu", phone: "N/A" },
